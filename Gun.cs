@@ -25,17 +25,19 @@ SOFTWARE.
 using UnityEngine;
 using System.Collections;
 
-public class Gun : MonoBehaviour {
+public class Gun : MonoBehaviour
+{
 
     // The object which will be shot from the gun
     public GameObject bulletObject;
     
     // The speed (in Unity units) that the object should be shot at
     public float speed;
-    
-	// Update is called once per frame
-	void Update () {
-        if (Input.GetButtonDown("Fire1"))
+
+    // Update is called once per frame
+    void Update () 
+    {
+       if (Input.GetButtonDown("Fire1"))
         {   
             // We're going to make a new bullet object
             GameObject newBullet = (GameObject)Instantiate(
@@ -53,5 +55,5 @@ public class Gun : MonoBehaviour {
             // Offset according to player camera rotation
             newBullet.rigidbody.velocity += this.transform.FindChild("Main Camera").forward * speed;
         }
-	}
+    }
 }
