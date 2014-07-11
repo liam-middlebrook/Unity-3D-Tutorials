@@ -1,4 +1,4 @@
-﻿/*
+/*
 The MIT License (MIT)
 
 Copyright (c) 2014 Liam Middlebrook ( https://github.com/liam-middlebrook )
@@ -30,9 +30,9 @@ public class Gun : MonoBehaviour
 
     // The object which will be shot from the gun
     public GameObject bulletObject;
-    
+    public Vector3 bulletOffset = new Vector3(.75f, .5f, 1);
     // The speed (in Unity units) that the object should be shot at
-    public float speed;
+    public float speed = 10.0f;
 
     // Update is called once per frame
     void Update () 
@@ -46,14 +46,12 @@ public class Gun : MonoBehaviour
                                                    this.gameObject.transform.rotation); // The rotation to create it at
             // Now we need to slightly translate the bullet so it's not in the player
             newBullet.transform.Translate(
-                                    new Vector3(0, 1, 1), // How much we're going to offset it
+                                    bulletOffset, // How much we're going to offset it
                                     newBullet.transform); // The object we'll offset it relative to
             
             // Now we need to set the object's velocity to match the way we're looking
-            // Offset according to player rotation
-            newBullet.rigidbody.velocity = transform.forward * speed;
             // Offset according to player camera rotation
-            newBullet.rigidbody.velocity += this.transform.FindChild("Main Camera").forward * speed;
+            newBullet.rigidbody.velocity = this.transform.FindChild("Main Camera").forward * speed;
         }
     }
 }
