@@ -25,22 +25,15 @@ SOFTWARE.
 using UnityEngine;
 using System.Collections;
 
-/*
- * A Collectable class for unity3d
- * 
- * On collision the collectable destroys itself
-*/
-public class Collectable : MonoBehaviour {
+// A score component that draws it's score to the screen
+public class Score : MonoBehaviour {
 
-    // When the collectable is collided with by any game object
-    void OnCollisionEnter(Collision col)
-    {
-        // If we collide with the player do the following
-        if (col.gameObject.tag == "Player")
-        {
-			((Score)collision.gameObject.GetComponent("Score")).Points++;
-            // Destroy this collectable
-            Destroy(this.gameObject);
-        }
-    }
+    // The points this score object currently has
+	public int Points = 0;
+	
+	// Use this for initialization
+	void OnGUI () {
+	    // Create a new GUI Box with the Score labeled inside of it
+		GUI.Box(new Rect(10,10,100,90), "Score: " + Points);
+	}
 }
