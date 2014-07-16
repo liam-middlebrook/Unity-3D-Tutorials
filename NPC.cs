@@ -41,7 +41,7 @@ public class NPC : MonoBehaviour {
 	private int currentLine = 0;
 	
 	// Whether or not the player is in the bounds of the NPC
-	private bool inBounds;
+	public bool inBounds;
 	// Use this for initialization
 	void Start ()
 	{
